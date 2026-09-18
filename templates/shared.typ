@@ -125,7 +125,7 @@
       comment-color: rgb("#394b70"),
       lang-color: rgb("#3d59a1"),
       lang: false,
-      numbering: false,
+      numbering: true,
     )
   } else {
     zebraw-init.with(
@@ -134,7 +134,7 @@
         (code-extra-colors.bg, code-extra-colors.bg)
       },
       lang: false,
-      numbering: false,
+      numbering: true,
     )
   }
 
