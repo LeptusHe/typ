@@ -60,6 +60,7 @@
 
   set text(main-size) if sys-is-html-target
   set text(fill: rgb("dfdfd6")) if is-dark-theme and sys-is-html-target
+  set heading(numbering: "1.") if sys-is-html-target
   show link: set text(fill: dash-color)
 
   show heading: it => {
@@ -74,7 +75,19 @@
           heading-hash(it, hash-color: dash-color)
         }
 
-        it
+        if sys-is-html-target {
+          let tag = "h" + str(it.level + 1)
+          html.elem(tag, [
+            #html.elem(
+              "span",
+              counter(heading).display(it.numbering),
+              attrs: (class: "typst-heading-number"),
+            )
+            #it.body
+          ])
+        } else {
+          it
+        }
       },
     )
   }
